@@ -1,8 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model BookListViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Books</h1>
+<br />
+
+<div class="container">
+    <div class="row">
+        @foreach (Book x in Model.Books)
+        {
+            <div class="col-md-6">
+                <!-- Used col-md-6 to display two cards across on medium and larger screens -->
+                <partial name="BookInformation" model="x" />
+            </div>
+        }
+    </div>
 </div>
+
+
+<div page-model="@Model.PageinationInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
+</div>
+
+</div>
+
+
+<div page-model="@Model.PageinationInfo" page-action="Index" page-class-enabled=true page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group"></div>
