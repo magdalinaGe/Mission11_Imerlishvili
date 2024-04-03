@@ -7,6 +7,7 @@ namespace Mission11_Imerlishvili.Models
 {
     public partial class BookstoreContext : DbContext
     {
+   
 
         public BookstoreContext(DbContextOptions<BookstoreContext> options) : base(options)
         {
@@ -24,10 +25,14 @@ namespace Mission11_Imerlishvili.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+         // Configure the entity model for the Book entity
             modelBuilder.Entity<Book>(entity =>
             {
+               // Create a unique index on the BookId property
+     
                 entity.HasIndex(e => e.BookId, "IX_Books_BookID")
                     .IsUnique();
+        // Configure the BookId property to be mapped to the "BookID" column in the database
 
                 entity.Property(e => e.BookId).HasColumnName("BookID");
 
